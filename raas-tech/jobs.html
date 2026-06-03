@@ -4,147 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Current Openings – XeniaTek</title>
-  <meta name="description" content="Explore career opportunities at XeniaTek — ServiceNow staffing and consulting experts. Submit your resume for future openings.">
+  <meta name="description" content="Explore ServiceNow career opportunities at XeniaTek. We place IRM, HRSD, ITAM, AI, ITOM and Developer talent. Submit your resume today.">
+  <meta property="og:title" content="Jobs – XeniaTek ServiceNow Staffing">
+  <meta property="og:description" content="ServiceNow career opportunities with XeniaTek. Submit your resume and we'll help you find the right role.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xeniatek-website-production.up.railway.app/jobs.html">
+  <meta property="og:image" content="https://xeniatek-website-production.up.railway.app/images/hero-banner.webp">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* Additional styles for openings page */
-    .openings-section {
-      background: var(--bg);
-      padding: 60px 70px 80px;
-    }
-    .openings-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    /* No jobs message box */
-    .no-jobs-message {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      border: 1px solid #eef0f9;
-    }
-
-    .no-jobs-icon {
-      font-size: 4rem;
-      color: var(--green);
-      margin-bottom: 1.2rem;
-    }
-
-    .no-jobs-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .no-jobs-text {
-      font-size: 1rem;
-      color: var(--text-body);
-      line-height: 1.6;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .no-jobs-text p {
-      margin-bottom: 1rem;
-    }
-
-    .action-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      font-family: 'Kumbh Sans', sans-serif;
-    }
-
-    .btn-primary {
-      background: var(--green-btn);
-      color: var(--white);
-      box-shadow: 0 4px 10px rgba(119, 191, 0, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: #7ed321;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(126, 211, 33, 0.3);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--navy);
-      color: var(--navy);
-    }
-
-    .btn-outline:hover {
-      background: #eef0f9;
-      transform: translateY(-2px);
-      border-color: var(--purple);
-      color: var(--purple);
-    }
-
-    .dynamic-toast {
-      margin-top: 1.5rem;
-      font-size: 0.85rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: 50px;
-      background: #e9f8cc;
-      color: var(--text-dark);
-      display: inline-block;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      .openings-section {
-        padding: 40px 24px 60px;
-      }
-      .no-jobs-title {
-        font-size: 1.5rem;
-      }
-      .no-jobs-icon {
-        font-size: 3rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .openings-section {
-        padding: 30px 16px 50px;
-      }
-      .no-jobs-message {
-        padding: 2rem 1.2rem;
-      }
-      .btn {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.8rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<!-- ═══ HEADER (matching other pages) ═══════════════════════════════════════ -->
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════════ -->
 <header class="header-wrap">
   <div class="navbar">
     <a href="index.html" class="logo">
@@ -153,7 +28,6 @@
       </div>
       <span class="logo-text">XeniaTek: The X Factor in ServiceNow Help</span>
     </a>
-
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
@@ -162,12 +36,10 @@
       <a href="jobs.html" class="active">Jobs</a>
       <a href="contact.html" class="btn-contact">Contact Us</a>
     </nav>
-
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
@@ -178,7 +50,7 @@
   </div>
 </header>
 
-<!-- ═══ PAGE BANNER ═══════════════════════════════════════════════════════ -->
+<!-- ═══ PAGE BANNER ═══════════════════════════════════════════════════════════ -->
 <div class="page-banner-wrap">
   <div class="page-banner">
     <div class="page-banner-bg"></div>
@@ -193,87 +65,194 @@
   </div>
 </div>
 
-<!-- ═══ OPENINGS CONTENT ════════════════════════════════════════════════ -->
-<section class=”openings-section reveal”>
-  <div class=”openings-inner”>
+<!-- ═══ INTRO ════════════════════════════════════════════════════════════════ -->
+<section class="jobs-intro-section reveal">
+  <div class="jobs-intro-inner">
+    <div class="jobs-intro-badge"><span>✦ We're Hiring ✦</span></div>
+    <h2 class="jobs-intro-heading">ServiceNow Roles We Typically Fill</h2>
+    <p class="jobs-intro-subhead">
+      We have clients who consistently need skilled ServiceNow professionals. Even when no specific role is listed, we are actively building our talent network. Submit your resume and we will reach out when the right opportunity arises.
+    </p>
+  </div>
+</section>
 
-    <div class=”jobs-intro”>
-      <h2 class=”jobs-heading”>ServiceNow Roles We Typically Fill</h2>
-      <p class=”jobs-subhead”>We have clients who consistently need skilled ServiceNow professionals. Even when no specific role is listed, we are actively building our talent network. Submit your resume and we will reach out when the right opportunity arises.</p>
+<!-- ═══ ROLE CARDS ═══════════════════════════════════════════════════════════ -->
+<section class="jobs-cards-section">
+  <div class="jobs-cards-inner">
+
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3L4 7v7c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V7L14 3z" stroke="#7ed321" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M9.5 14l3 3 6-6" stroke="#7ed321" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow IRM / GRC Specialist</div>
+          <div class="job-card-type">Contract / Full-Time</div>
+        </div>
+      </div>
+      <p class="job-card-desc">Experience with Integrated Risk Management, Policy &amp; Compliance, or Vendor Risk modules. CIS-Risk and Compliance certification a plus. Strong understanding of GRC frameworks preferred.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class=”role-cards”>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow IRM / GRC Specialist</div>
-        <div class=”role-type”>Contract / Full-Time</div>
-        <p class=”role-desc”>Experience with Integrated Risk Management, Policy & Compliance, or Vendor Risk modules. CIS-Risk and Compliance cert a plus.</p>
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="10" r="5" stroke="#7ed321" stroke-width="1.7"/>
+            <path d="M5 24c0-5 4-9 9-9s9 4 9 9" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow HRSD Consultant</div>
+          <div class="job-card-type">Contract / Contract-to-Hire</div>
+        </div>
       </div>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow HRSD Consultant</div>
-        <div class=”role-type”>Contract / Contract-to-Hire</div>
-        <p class=”role-desc”>Hands-on HRSD implementation experience. Case management, employee journeys, and HR Portal configuration required.</p>
-      </div>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow ITAM / SAM Administrator</div>
-        <div class=”role-type”>Contract</div>
-        <p class=”role-desc”>Software Asset Management or IT Asset Management expertise. Discovery integration, reconciliation, and reporting experience preferred.</p>
-      </div>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow AI / Virtual Agent Developer</div>
-        <div class=”role-type”>Contract / Full-Time</div>
-        <p class=”role-desc”>NLU, Virtual Agent Designer, and AI Search experience. Familiarity with Now Assist and predictive intelligence a strong plus.</p>
-      </div>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow ITOM / Discovery Specialist</div>
-        <div class=”role-type”>Contract</div>
-        <p class=”role-desc”>Service Mapping, CMDB health, Discovery patterns, and MID Server experience. CIS-ITOM cert preferred.</p>
-      </div>
-
-      <div class=”role-card”>
-        <div class=”role-title”>ServiceNow Developer / Configurator</div>
-        <div class=”role-type”>Contract / Contract-to-Hire</div>
-        <p class=”role-desc”>Scripting, Flow Designer, IntegrationHub, and UI Builder skills. CSA required; CAD preferred.</p>
-      </div>
-
+      <p class="job-card-desc">Hands-on HRSD implementation experience required. Case management, employee journeys, and HR Portal configuration are key focus areas. Experience with HR integrations is a strong plus.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class=”resume-submit-box”>
-      <h3 class=”resume-box-title”>Don’t see your role listed?</h3>
-      <p class=”resume-box-text”>We vet every resume personally and help you put your best foot forward — whether it is through us or another path. Send your CV to <strong>recruiting@xeniatek.com</strong> or fill out the form below.</p>
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="20" height="16" rx="2" stroke="#7ed321" stroke-width="1.7"/>
+            <path d="M4 11h20" stroke="#7ed321" stroke-width="1.7"/>
+            <path d="M9 16h4M9 19h6" stroke="#7ed321" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow ITAM / SAM Administrator</div>
+          <div class="job-card-type">Contract</div>
+        </div>
+      </div>
+      <p class="job-card-desc">Software Asset Management or IT Asset Management expertise. Discovery integration, reconciliation, and reporting experience preferred. Knowledge of SCCM, JAMF, or similar tools is a plus.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
+    </div>
 
-      <form id=”resumeForm” action=”https://formspree.io/f/xdkndgqw” method=”POST” class=”resume-form” enctype=”multipart/form-data”>
-        <div id=”resumeFormMessage”></div>
-        <div class=”form-row”>
-          <div class=”form-group”>
-            <label class=”form-label” for=”rName”>Full Name</label>
-            <input class=”form-input” type=”text” id=”rName” name=”name” placeholder=”Your name” required/>
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 4a7 7 0 0 1 4 12.7V19a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 14 4z" stroke="#7ed321" stroke-width="1.7"/>
+            <line x1="11" y1="22" x2="17" y2="22" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+            <line x1="12" y1="24.5" x2="16" y2="24.5" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow AI / Virtual Agent Developer</div>
+          <div class="job-card-type">Contract / Full-Time</div>
+        </div>
+      </div>
+      <p class="job-card-desc">NLU, Virtual Agent Designer, and AI Search experience required. Familiarity with Now Assist and predictive intelligence a strong plus. Experience building conversation flows and topic design preferred.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="4" stroke="#7ed321" stroke-width="1.7"/>
+            <circle cx="14" cy="14" r="9" stroke="#7ed321" stroke-width="1.4" stroke-dasharray="3 2"/>
+            <line x1="14" y1="5" x2="14" y2="2" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+            <line x1="14" y1="26" x2="14" y2="23" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+            <line x1="5" y1="14" x2="2" y2="14" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+            <line x1="26" y1="14" x2="23" y2="14" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow ITOM / Discovery Specialist</div>
+          <div class="job-card-type">Contract</div>
+        </div>
+      </div>
+      <p class="job-card-desc">Service Mapping, CMDB health, Discovery patterns, and MID Server experience required. CIS-ITOM certification preferred. Strong understanding of network topology and cloud environments a plus.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="7,10 4,14 7,18" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="21,10 24,14 21,18" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="17" y1="6" x2="11" y2="22" stroke="#7ed321" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">ServiceNow Developer / Configurator</div>
+          <div class="job-card-type">Contract / Contract-to-Hire</div>
+        </div>
+      </div>
+      <p class="job-card-desc">Scripting, Flow Designer, IntegrationHub, and UI Builder skills required. CSA required; CAD preferred. Experience with REST API integrations and custom application development a strong plus.</p>
+      <a href="contact.html" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ RESUME SUBMIT ════════════════════════════════════════════════════════ -->
+<section class="jobs-submit-section reveal">
+  <div class="jobs-submit-inner">
+
+    <div class="jobs-submit-text">
+      <div class="jobs-submit-badge"><span>✦ Always Accepting Resumes ✦</span></div>
+      <h2 class="jobs-submit-heading">Don't See Your Role?</h2>
+      <p class="jobs-submit-desc">
+        We vet every resume personally and help you put your best foot forward — whether it is through us or another path. Send your CV to <strong>recruiting@xeniatek.com</strong> or fill out the form and we will be in touch.
+      </p>
+      <div class="jobs-submit-perks">
+        <div class="jobs-perk"><span class="jobs-perk-icon">✓</span> Personal resume review by our team</div>
+        <div class="jobs-perk"><span class="jobs-perk-icon">✓</span> Help positioning your ServiceNow experience</div>
+        <div class="jobs-perk"><span class="jobs-perk-icon">✓</span> Matched to roles across our client network</div>
+        <div class="jobs-perk"><span class="jobs-perk-icon">✓</span> Mentoring available for CSA certification</div>
+      </div>
+    </div>
+
+    <div class="jobs-submit-form-wrap">
+      <form id="resumeForm" action="https://formspree.io/f/xdkndgqw" method="POST" class="jobs-form">
+        <div id="resumeFormMessage"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="rName">Full Name</label>
+          <input class="form-input" type="text" id="rName" name="name" placeholder="Your full name" required/>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="rEmail">Email Address</label>
+            <input class="form-input" type="email" id="rEmail" name="email" placeholder="your@email.com" required/>
           </div>
-          <div class=”form-group”>
-            <label class=”form-label” for=”rEmail”>Email</label>
-            <input class=”form-input” type=”email” id=”rEmail” name=”email” placeholder=”your@email.com” required/>
+          <div class="form-group">
+            <label class="form-label" for="rPhone">Phone</label>
+            <input class="form-input" type="tel" id="rPhone" name="phone" placeholder="+1 (555) 000-0000"/>
           </div>
         </div>
-        <div class=”form-group”>
-          <label class=”form-label” for=”rLinkedIn”>LinkedIn Profile URL</label>
-          <input class=”form-input” type=”url” id=”rLinkedIn” name=”linkedin” placeholder=”https://linkedin.com/in/yourprofile”/>
+
+        <div class="form-group">
+          <label class="form-label" for="rLinkedIn">LinkedIn Profile URL</label>
+          <input class="form-input" type="url" id="rLinkedIn" name="linkedin" placeholder="https://linkedin.com/in/yourprofile"/>
         </div>
-        <div class=”form-group”>
-          <label class=”form-label” for=”rRole”>Target Role / Skill Set</label>
-          <input class=”form-input” type=”text” id=”rRole” name=”role” placeholder=”e.g. ServiceNow ITSM Developer”/>
+
+        <div class="form-group">
+          <label class="form-label" for="rRole">Target Role / Skill Set</label>
+          <input class="form-input" type="text" id="rRole" name="role" placeholder="e.g. ServiceNow ITSM Developer, CSA candidate"/>
         </div>
-        <button class=”form-submit” type=”submit”>Submit Resume Interest</button>
+
+        <div class="form-group">
+          <label class="form-label" for="rMessage">Anything else we should know?</label>
+          <textarea class="form-input" id="rMessage" name="message" rows="3" placeholder="Availability, certifications, preferred engagement type..." style="resize: vertical;"></textarea>
+        </div>
+
+        <button class="form-submit" type="submit">Submit Resume Interest</button>
       </form>
     </div>
 
   </div>
 </section>
 
-<!-- ═══ FOOTER (matching other pages) ══════════════════════════════════════ -->
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -290,7 +269,6 @@
         </a>
       </div>
     </div>
-
     <div class="footer-col">
       <div class="footer-col-title">Quick links</div>
       <div class="footer-links">
@@ -301,7 +279,6 @@
         <a href="contact.html">Contact Us</a>
       </div>
     </div>
-
     <div class="footer-col">
       <div class="footer-col-title">Services</div>
       <div class="footer-links">
@@ -311,7 +288,6 @@
         <a href="services.html">Referrals &amp; Mentoring</a>
       </div>
     </div>
-
     <div class="footer-col">
       <div class="footer-col-title">Get In Touch</div>
       <div class="footer-contact">
@@ -321,20 +297,14 @@
       </div>
     </div>
   </div>
-
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
-      <span class="footer-copy">Copyright &copy; 2026 Xeniatek. All Rights Reserved.</span>
+      <span class="footer-copy">Copyright &copy; 2026 Xeniatek. All Rights Reserved. | <a href="privacy.html" style="color: rgba(255,255,255,0.6);">Privacy Policy</a></span>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to top -->
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
-
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 <script src="js/main.js"></script>
 </body>
 </html>

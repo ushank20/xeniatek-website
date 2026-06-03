@@ -1415,21 +1415,53 @@ textarea.form-input { min-height: 120px; }
 /* ═══════════════════════════════════════════════════════════
    JOBS PAGE
    ═══════════════════════════════════════════════════════════ */
-.jobs-intro { text-align: center; margin-bottom: 48px; }
-.jobs-heading { font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
-.jobs-subhead { font-size: 1rem; color: var(--text-body); max-width: 680px; margin: 0 auto; line-height: 1.6; }
-.role-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
-.role-card { background: #fff; border-radius: 14px; padding: 28px 24px; border: 1px solid #eef0f9; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-.role-title { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-.role-type { font-size: 0.8rem; font-weight: 600; color: var(--green-btn); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-.role-desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.55; }
-.resume-submit-box { background: var(--navy); border-radius: 20px; padding: 48px 40px; color: var(--white); }
-.resume-box-title { font-size: 1.6rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
-.resume-box-text { color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 28px; }
-.resume-form .form-label { color: rgba(255,255,255,0.85); }
-.resume-form .form-input { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: var(--white); }
-.resume-form .form-input::placeholder { color: rgba(255,255,255,0.4); }
-@media (max-width: 768px) { .resume-submit-box { padding: 32px 24px; } .role-cards { grid-template-columns: 1fr; } }
+
+/* Intro section */
+.jobs-intro-section { background: var(--bg); padding: 72px 48px 56px; text-align: center; }
+.jobs-intro-inner { max-width: 760px; margin: 0 auto; }
+.jobs-intro-badge { margin-bottom: 16px; }
+.jobs-intro-badge span { font-size: 13px; font-weight: 600; color: var(--purple); background: var(--purple-light); padding: 6px 20px; border-radius: 40px; letter-spacing: 1px; }
+.jobs-intro-heading { font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: var(--text-dark); margin-bottom: 20px; line-height: 1.2; }
+.jobs-intro-subhead { font-size: 1.05rem; color: var(--text-body); line-height: 1.75; }
+
+/* Job cards grid */
+.jobs-cards-section { background: #eeeff2; padding: 64px 48px; }
+.jobs-cards-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.job-card { background: #fff; border-radius: 16px; padding: 32px 28px; border: 1px solid #e8eaf2; box-shadow: 0 2px 16px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s, box-shadow 0.2s; }
+.job-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(83,5,106,0.12); }
+.job-card-header { display: flex; align-items: flex-start; gap: 16px; }
+.job-card-icon { width: 44px; height: 44px; background: #f0fad4; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.job-card-icon svg { width: 22px; height: 22px; }
+.job-card-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); line-height: 1.35; margin-bottom: 4px; }
+.job-card-type { font-size: 0.75rem; font-weight: 600; color: var(--green-btn); text-transform: uppercase; letter-spacing: 0.6px; }
+.job-card-desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; flex: 1; }
+.job-card-apply { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--purple); text-decoration: none; margin-top: auto; transition: gap 0.2s; }
+.job-card-apply:hover { gap: 12px; color: var(--green-btn); }
+
+/* Resume submit section */
+.jobs-submit-section { background: var(--bg); padding: 80px 48px; }
+.jobs-submit-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.jobs-submit-badge { margin-bottom: 16px; }
+.jobs-submit-badge span { font-size: 13px; font-weight: 600; color: var(--green-btn); background: #e9f8cc; padding: 6px 20px; border-radius: 40px; letter-spacing: 1px; }
+.jobs-submit-heading { font-size: clamp(24px, 2.8vw, 36px); font-weight: 700; color: var(--text-dark); margin-bottom: 16px; line-height: 1.2; }
+.jobs-submit-desc { font-size: 1rem; color: var(--text-body); line-height: 1.75; margin-bottom: 32px; }
+.jobs-submit-perks { display: flex; flex-direction: column; gap: 14px; }
+.jobs-perk { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--text-body); line-height: 1.4; }
+.jobs-perk-icon { width: 22px; height: 22px; background: var(--green); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+.jobs-submit-form-wrap { background: var(--white); border-radius: 20px; padding: 40px 36px; box-shadow: 0 4px 32px rgba(0,0,0,0.08); border: 1px solid #eef0f9; }
+.jobs-form { display: flex; flex-direction: column; gap: 20px; }
+
+@media (max-width: 1024px) {
+  .jobs-cards-inner { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .jobs-intro-section { padding: 48px 24px 40px; }
+  .jobs-cards-section { padding: 40px 24px; }
+  .jobs-cards-inner { grid-template-columns: 1fr; }
+  .jobs-submit-section { padding: 48px 24px; }
+  .jobs-submit-inner { grid-template-columns: 1fr; gap: 40px; }
+  .jobs-submit-form-wrap { padding: 28px 20px; }
+}
 
 /* ═══════════════════════════════════════════════════════════
    COOKIE CONSENT BANNER
