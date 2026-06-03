@@ -31,37 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ── Contact form validation (contact page only) ────── */
-  const formSubmit = document.querySelector('.form-submit');
-  if (formSubmit) {
-    formSubmit.addEventListener('click', function (e) {
-      e.preventDefault();
-      const inputs = document.querySelectorAll('.form-input');
-      let valid = true;
-
-      inputs.forEach(input => {
-        if (!input.value.trim()) {
-          input.style.borderColor = '#e05252';
-          valid = false;
-        } else {
-          input.style.borderColor = '#7ed321';
-        }
-      });
-
-      if (valid) {
-        this.textContent = 'Submitted ✓';
-        this.style.background = '#3cbe2e';
-        setTimeout(() => {
-          this.textContent = 'Submit';
-          this.style.background = '';
-          inputs.forEach(i => {
-            i.value = '';
-            i.style.borderColor = '';
-          });
-        }, 3000);
-      }
-    });
-  }
+  /* ── Contact form: handled by async submit handler below ── */
 
 });
 
