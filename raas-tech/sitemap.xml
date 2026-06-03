@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://xeniatek-website-production.up.railway.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/about.html</loc><priority>0.8</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/services.html</loc><priority>0.9</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/partners.html</loc><priority>0.7</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/teams.html</loc><priority>0.7</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/jobs.html</loc><priority>0.8</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/contact.html</loc><priority>0.9</priority></url>
-  <url><loc>https://xeniatek-website-production.up.railway.app/privacy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/about.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/services.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/partners.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/teams.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/jobs.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/contact.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/privacy.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/case-studies.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/hire-servicenow-talent.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/submit-resume.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/salary-guide.html</loc><priority>0.8</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog/servicenow-staffing-guide-2026.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog/servicenow-irm-grc-explained.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog/servicenow-csa-certification-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog/servicenow-talent-shortage-minneapolis.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/blog/servicenow-temp-to-hire-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-irm-grc-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-hrsd-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-itam-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-itom-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-cmdb-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://xeniatek-website-production.up.railway.app/servicenow-ai-virtual-agent-staffing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 </urlset>

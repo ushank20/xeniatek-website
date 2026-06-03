@@ -15,8 +15,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://xeniatek-website-production.up.railway.app/">
+  <link rel="preload" as="image" href="images/hero-banner.webp">
 </head>
 <body>
+<div class="announcement-bar" id="announcementBar">
+  <span>🟢 Actively placing ServiceNow talent — 48hr candidate turnaround. <a href="contact.html">Talk to us →</a></span>
+  <button class="announcement-bar-close" onclick="document.getElementById('announcementBar').style.display='none'" aria-label="Close announcement">✕</button>
+</div>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 
 <!-- ═══ HEADER ═══════════════════════════════════════ -->
 <header class="header-wrap">
@@ -52,6 +59,7 @@
   </div>
 </header>
 
+<main id="main-content">
 <!-- ═══ HERO ═════════════════════════════════════════ -->
 <div class="hero-wrap">
 <section class="hero">
@@ -176,6 +184,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
           <img
             src="images/home-about.webp"
             alt="XeniaTek team working together"
+            loading="lazy"
           />
         </div>
       </div>
@@ -197,7 +206,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
       <!-- Row 1: img | text | img | text -->
       <div class="svc-row">
         <div class="svc-card svc-card-img">
-          <img src="images/home-service1.webp" alt="Capacity on Demand"/>
+          <img src="images/home-service1.webp" alt="Capacity on Demand" loading="lazy"/>
         </div>
         <div class="svc-card svc-card-text">
           <div class="svc-title">Capacity on Demand</div>
@@ -213,14 +222,14 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
             solutions that align with your business needs.</p>
         </div>
         <div class="svc-card svc-card-img">
-          <img src="images/home-service3.webp" alt="Flexible Models"/>
+          <img src="images/home-service3.webp" alt="Flexible Models" loading="lazy"/>
         </div>
       </div>
 
       <!-- Row 2: text | img | text | img -->
       <div class="svc-row">
         <div class="svc-card svc-card-img">
-          <img src="images/home-service2.webp" alt="Module and Backlog Execution"/>
+          <img src="images/home-service2.webp" alt="Module and Backlog Execution" loading="lazy"/>
         </div>
         <div class="svc-card svc-card-text">
           <div class="svc-title">Module and Backlog Execution</div>
@@ -236,7 +245,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
             support contractors in achieving certifications and aligning with their long-term goals.</p>
         </div>
         <div class="svc-card svc-card-img">
-          <img src="images/home-service4.webp" alt="Referrals and Mentoring"/>
+          <img src="images/home-service4.webp" alt="Referrals and Mentoring" loading="lazy"/>
         </div>
       </div>
 
@@ -287,7 +296,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
  
       <!-- Right: vision board image -->
       <div class="vision-image-wrap">
-        <img src="images/vision.jpeg" alt="XeniaTek Vision Board" class="vision-image"/>
+        <img src="images/vision.jpeg" alt="XeniaTek Vision Board" class="vision-image" loading="lazy"/>
       </div>
  
     </div>
@@ -413,6 +422,90 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
   </div>
 </div> -->
 
+<!-- ═══ GLOBAL DELIVERY ═══════════════════════════════════ -->
+<section class="delivery-section reveal">
+  <div class="delivery-inner">
+    <div class="delivery-text">
+      <div class="delivery-badge"><span>✦ Global Delivery Model ✦</span></div>
+      <h2 class="delivery-heading">US Expertise. <span class="accent-green">India Efficiency.</span></h2>
+      <p class="delivery-desc">XeniaTek operates from Minneapolis, Minnesota with a dedicated delivery center in India. This means you get senior US-based account management and strategic oversight combined with cost-competitive global delivery — without sacrificing quality or communication.</p>
+      <div class="delivery-stats">
+        <div class="delivery-stat"><div class="delivery-stat-num">US</div><div class="delivery-stat-label">Headquarters<br>Minneapolis, MN</div></div>
+        <div class="delivery-stat"><div class="delivery-stat-num">IN</div><div class="delivery-stat-label">Delivery Center<br>India Operations</div></div>
+        <div class="delivery-stat"><div class="delivery-stat-num">24/7</div><div class="delivery-stat-label">Coverage<br>Across Time Zones</div></div>
+      </div>
+    </div>
+    <div class="delivery-features">
+      <div class="delivery-feature"><div class="delivery-feature-icon">✓</div><div><strong>Onshore account management</strong> — your XeniaTek point of contact is always US-based</div></div>
+      <div class="delivery-feature"><div class="delivery-feature-icon">✓</div><div><strong>Nearshore cost advantage</strong> — India delivery center lowers blended rates vs. US-only firms</div></div>
+      <div class="delivery-feature"><div class="delivery-feature-icon">✓</div><div><strong>No markup on specialty partners</strong> — when we bring in expert help, we don't charge a margin on top</div></div>
+      <div class="delivery-feature"><div class="delivery-feature-icon">✓</div><div><strong>Direct principal access</strong> — clients work with the CEO and COO, not junior account reps</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ══════════════════════════════════════ -->
+<section class="testimonials-section reveal">
+  <div class="testimonials-inner">
+    <div class="testimonials-header">
+      <div class="testimonials-badge"><span>✦ Client Voices ✦</span></div>
+      <h2 class="testimonials-heading">What Our Clients Say</h2>
+      <p class="testimonials-subhead">43 placements. 90% retention. 4.57 CSAT. Here's what the people behind those numbers say.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"XeniaTek found us a qualified ServiceNow IRM consultant in under two weeks. The candidate was thoroughly vetted and hit the ground running on day one. That's the kind of partner we needed."</p>
+        <div class="testimonial-author"><strong>Director of IT Risk</strong><span>Fortune 500 Insurance Company, Minneapolis</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"What sets XeniaTek apart is that Jason and the team genuinely understand the ServiceNow ecosystem. They didn't just send resumes — they helped us think through the right engagement model for our project timeline."</p>
+        <div class="testimonial-author"><strong>VP of Technology</strong><span>Mid-Market Healthcare Organization</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"We've worked with larger staffing firms and the experience doesn't compare. With XeniaTek we get direct access to leadership, honest advice, and candidates who are actually certified and experienced."</p>
+        <div class="testimonial-author"><strong>ServiceNow Practice Lead</strong><span>National Implementation Partner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PARTNER CREDENTIALS ═══════════════════════════════ -->
+<section class="credentials-section reveal">
+  <div class="credentials-inner">
+    <h2 class="credentials-heading">Our Credentials &amp; Ecosystem</h2>
+    <div class="credentials-grid">
+      <div class="credential-item">
+        <img src="images/servicenow-logo.svg" alt="ServiceNow Partner" loading="lazy" style="background:#293e40;border-radius:8px;padding:10px 16px;max-width:160px;">
+        <div class="credential-label">ServiceNow Partner</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-badge-box">
+          <div class="credential-badge-num">43</div>
+          <div class="credential-badge-text">Verified<br>Placements</div>
+        </div>
+        <div class="credential-label">Placement Track Record</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-badge-box">
+          <div class="credential-badge-num">4.57</div>
+          <div class="credential-badge-text">Client<br>CSAT Score</div>
+        </div>
+        <div class="credential-label">Client Satisfaction</div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-badge-box">
+          <div class="credential-badge-num">90%</div>
+          <div class="credential-badge-text">12-Month<br>Retention</div>
+        </div>
+        <div class="credential-label">Candidate Retention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ WHY CHOOSE SECTION ══════════════════════════════ -->
 <section class="why-section reveal">
   <div class="why-inner">
@@ -430,6 +523,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
         <img
           src="images/choose-us.webp"
           alt="XeniaTek team"
+          loading="lazy"
         />
       </div>
     </div>
@@ -519,6 +613,8 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
   </div>
 </div>
 
+</main>
+
 <!-- ═══ FOOTER ═══════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="footer-inner">
@@ -527,7 +623,7 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
     <div class="footer-brand">
       <div class="footer-logo-box">
         <!-- Replace with your actual logo image -->
-        <img src="images/ushanklogo.webp" alt="Ushank Tech | XeniaTek Logo" style="width: 150px; height: auto;">
+        <img src="images/ushanklogo.webp" alt="Ushank Tech | XeniaTek Logo" style="width: 150px; height: auto;" loading="lazy">
       </div>
       <div class="footer-business-line">
         <span class="business-name">Ushank Tech</span> <span class="doing-business">doing business as</span> <span class="business-name">XeniaTek</span>
@@ -586,27 +682,48 @@ And with a clear shortage of ServiceNow talent, organizations need a better way 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "XeniaTek",
-  "alternateName": "Ushank Tech",
-  "url": "https://xeniatek-website-production.up.railway.app",
-  "logo": "https://xeniatek-website-production.up.railway.app/images/logo.webp",
-  "foundingDate": "2022",
-  "description": "ServiceNow staffing and consulting experts connecting enterprises with top ServiceNow talent.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Minneapolis",
-    "addressRegion": "MN",
-    "addressCountry": "US"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-952-270-8453",
-    "contactType": "customer service",
-    "email": "info@xeniatek.com"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/xeniatek"
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://xeniatek-website-production.up.railway.app/#organization",
+      "name": "XeniaTek",
+      "alternateName": "Ushank Tech",
+      "url": "https://xeniatek-website-production.up.railway.app",
+      "logo": "https://xeniatek-website-production.up.railway.app/images/logo.webp",
+      "foundingDate": "2022",
+      "description": "ServiceNow staffing and consulting experts connecting enterprises with top ServiceNow talent since 2022.",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Minneapolis",
+        "addressRegion": "MN",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.9778,
+        "longitude": -93.2650
+      },
+      "areaServed": ["Minneapolis", "Twin Cities", "Minnesota", "United States"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-952-270-8453",
+        "contactType": "customer service",
+        "email": "info@xeniatek.com",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/xeniatek"
+      ],
+      "knowsAbout": ["ServiceNow", "IT Staffing", "Staff Augmentation", "ServiceNow IRM", "ServiceNow HRSD", "ServiceNow ITAM", "ServiceNow ITOM", "ServiceNow CMDB"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://xeniatek-website-production.up.railway.app/#website",
+      "url": "https://xeniatek-website-production.up.railway.app",
+      "name": "XeniaTek",
+      "publisher": {"@id": "https://xeniatek-website-production.up.railway.app/#organization"}
+    }
   ]
 }
 </script>
