@@ -165,64 +165,103 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
+const contactFormEl = document.getElementById('contactForm');
+if (contactFormEl) {
+  contactFormEl.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
+
     // Clear previous errors
     document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
     const formMessage = document.getElementById('formMessage');
     formMessage.innerHTML = '';
-    
+
     // Get form data
     const formData = new FormData(this);
-    
+
     // Show loading state
     const submitBtn = document.querySelector('.form-submit');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
-    
+
     try {
-        const response = await fetch('contact.php', {
+        const response = await fetch(this.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: { 'Accept': 'application/json' }
         });
-        
+
         const result = await response.json();
-        
-        if (result.success) {
-            formMessage.innerHTML = `<div style="background: #e9f8cc; color: #100F2E; padding: 15px; border-radius: 8px; border-left: 4px solid #7ed321;">
-                <i class="fas fa-check-circle"></i> ${result.message}
+
+        if (result.ok) {
+            formMessage.innerHTML = `<div style="background: #e9f8cc; color: #100F2E; padding: 15px; border-radius: 8px; border-left: 4px solid #7ed321; margin-bottom: 16px;">
+                Message sent successfully! We will be in touch soon.
             </div>`;
             document.getElementById('contactForm').reset();
         } else {
-            if (result.data) {
-                // Display field-specific errors
-                for (const [field, error] of Object.entries(result.data)) {
-                    const errorEl = document.getElementById(`${field}Error`);
-                    if (errorEl) {
-                        errorEl.textContent = error;
-                        errorEl.style.display = 'block';
-                    }
-                }
-                formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c;">
-                    <i class="fas fa-exclamation-triangle"></i> ${result.message}
-                </div>`;
-            } else {
-                formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c;">
-                    <i class="fas fa-exclamation-triangle"></i> ${result.message}
-                </div>`;
-            }
+            formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c; margin-bottom: 16px;">
+                Something went wrong. Please try again or email us directly at info@XeniaTek.com
+            </div>`;
         }
     } catch (error) {
-        formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c;">
-            <i class="fas fa-exclamation-triangle"></i> Network error. Please try again.
+        formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c; margin-bottom: 16px;">
+            Network error. Please try again.
         </div>`;
     } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-        
+
         // Scroll to message
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-});
+  });
+}
+
+// Resume form (jobs page)
+const resumeFormEl = document.getElementById('resumeForm');
+if (resumeFormEl) {
+  resumeFormEl.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formMessage = document.getElementById('resumeFormMessage');
+    formMessage.innerHTML = '';
+    const formData = new FormData(this);
+    const submitBtn = this.querySelector('.form-submit');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Submitting...';
+    submitBtn.disabled = true;
+    try {
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      const result = await response.json();
+      if (result.ok) {
+        formMessage.innerHTML = '<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">Thank you! We\'ll be in touch soon.</div>';
+        resumeFormEl.reset();
+      } else {
+        formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email recruiting@xeniatek.com directly.</div>';
+      }
+    } catch (err) {
+      formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Network error. Please try again.</div>';
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+}
+
+// Cookie consent
+(function() {
+  if (!localStorage.getItem('cookieConsent')) {
+    const banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.innerHTML = '<p>We use cookies to improve your experience. By continuing to use this site you agree to our use of cookies. <a href="privacy.html">Learn more</a></p><button id="cookie-accept">Accept</button>';
+    document.body.appendChild(banner);
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', '1');
+      banner.remove();
+    });
+  }
+})();
