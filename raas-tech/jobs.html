@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Current Openings – XeniaTek</title>
+  <meta name="description" content="Explore career opportunities at XeniaTek — ServiceNow staffing and consulting experts. Submit your resume for future openings.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Additional styles for openings page */
+    .openings-section {
+      background: var(--bg);
+      padding: 60px 70px 80px;
+    }
+    .openings-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* No jobs message box */
+    .no-jobs-message {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid #eef0f9;
+    }
+
+    .no-jobs-icon {
+      font-size: 4rem;
+      color: var(--green);
+      margin-bottom: 1.2rem;
+    }
+
+    .no-jobs-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .no-jobs-text {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .no-jobs-text p {
+      margin-bottom: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: 'Kumbh Sans', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--green-btn);
+      color: var(--white);
+      box-shadow: 0 4px 10px rgba(119, 191, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #7ed321;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(126, 211, 33, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      background: #eef0f9;
+      transform: translateY(-2px);
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .dynamic-toast {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      background: #e9f8cc;
+      color: var(--text-dark);
+      display: inline-block;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .openings-section {
+        padding: 40px 24px 60px;
+      }
+      .no-jobs-title {
+        font-size: 1.5rem;
+      }
+      .no-jobs-icon {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .openings-section {
+        padding: 30px 16px 50px;
+      }
+      .no-jobs-message {
+        padding: 2rem 1.2rem;
+      }
+      .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER (matching other pages) ═══════════════════════════════════════ -->
+<header class="header-wrap">
+  <div class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-box">
+        <img src="images/logo.webp" alt="XeniaTek Logo" style="height: 70px; width: auto;">
+      </div>
+      <span class="logo-text">XeniaTek: The X Factor in ServiceNow Help</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="partners.html">Partners &amp; Clients</a>
+      <a href="contact.html" class="btn-contact">Contact Us</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="partners.html">Partners &amp; Clients</a>
+    <a href="contact.html" class="btn-contact">Contact Us</a>
+  </div>
+</header>
+
+<!-- ═══ PAGE BANNER ═══════════════════════════════════════════════════════ -->
+<!-- <div class="page-banner-wrap">
+  <div class="page-banner">
+    <div class="page-banner-bg"></div>
+    <div class="page-banner-content reveal">
+      <h1 class="page-banner-title">Current Openings</h1>
+      <div class="page-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">›</span>
+        <span class="current">Current Openings</span>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- ═══ OPENINGS CONTENT — NO JOBS MESSAGE ════════════════════════════════ -->
+<section class="openings-section reveal">
+  <div class="openings-inner">
+
+    <!-- No Jobs Message -->
+    <div class="no-jobs-message">
+      <div class="no-jobs-icon">
+        <i class="fas fa-inbox"></i>
+      </div>
+      <div class="no-jobs-title">*****</div>
+      <div class="no-jobs-text">
+        <p>Help Us help you! We have several clients that seem to always need IRM,
+HRSD, CTA, AI, and Asset (ITAM,SAM) and ITOM skill sets. As we evolve
+this page to specific openings, please send your current CV (or a question) to
+<b>recruiting@xeniatek.com.</b>
+We’ll be more than happy to help you by vetting your resume and helping you
+make the best first impression possible – whether it be through us or some
+other means. Kind of applying the whole “X factor” thing to helping you shine.</p>
+
+
+        </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER (matching other pages) ══════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-box">
+        <img src="images/ushanklogo.webp" alt="Ushank Tech | XeniaTek Logo" style="width: 150px; height: auto;">
+      </div>
+      <div class="footer-business-line">
+        <span class="business-name">Ushank Tech</span> <span class="doing-business">doing business as</span> <span class="business-name">XeniaTek</span>
+      </div>
+      <p class="footer-tagline">Empowering businesses with innovative technology solutions.</p>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Quick links</div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="teams.html">Our Team</a>
+        <a href="services.html">Services</a>
+        <a href="partners.html">Partners &amp; Clients</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <div class="footer-links">
+        <a href="services.html">Capacity on Demand</a>
+        <a href="services.html">Flexible Models</a>
+        <a href="services.html">Module &amp; Backlog Execution</a>
+        <a href="services.html">Referrals &amp; Mentoring</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Get In Touch</div>
+      <div class="footer-contact">
+        <div class="footer-contact-item"><span>Email:</span> info@XeniaTek.com</div>
+        <div class="footer-contact-item"><span>Address:</span> XeniaTek – Minneapolis, Minnesota</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="footer-copy">Copyright &copy; 2026 Xeniatek. All Rights Reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script src="js/main.js"></script>
+</body>
+</html>

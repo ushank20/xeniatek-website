@@ -1,0 +1,10 @@
+{
+  "name": "xeniatek-website",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve raas-tech -p ${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}
