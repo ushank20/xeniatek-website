@@ -1,0 +1,44 @@
+[
+  {
+    "id": "irm-grc-specialist",
+    "title": "ServiceNow IRM / GRC Specialist",
+    "type": "Contract / Full-Time",
+    "description": "Experience with Integrated Risk Management, Policy &amp; Compliance, or Vendor Risk modules. CIS-Risk and Compliance certification a plus. Strong understanding of GRC frameworks preferred.",
+    "applyUrl": "contact.html"
+  },
+  {
+    "id": "hrsd-consultant",
+    "title": "ServiceNow HRSD Consultant",
+    "type": "Contract / Contract-to-Hire",
+    "description": "Hands-on HRSD implementation experience required. Case management, employee journeys, and HR Portal configuration are key focus areas. Experience with HR integrations is a strong plus.",
+    "applyUrl": "contact.html"
+  },
+  {
+    "id": "itam-sam-administrator",
+    "title": "ServiceNow ITAM / SAM Administrator",
+    "type": "Contract",
+    "description": "Software Asset Management or IT Asset Management expertise. Discovery integration, reconciliation, and reporting experience preferred. Knowledge of SCCM, JAMF, or similar tools is a plus.",
+    "applyUrl": "contact.html"
+  },
+  {
+    "id": "ai-virtual-agent-developer",
+    "title": "ServiceNow AI / Virtual Agent Developer",
+    "type": "Contract / Full-Time",
+    "description": "NLU, Virtual Agent Designer, and AI Search experience required. Familiarity with Now Assist and predictive intelligence a strong plus. Experience building conversation flows and topic design preferred.",
+    "applyUrl": "contact.html"
+  },
+  {
+    "id": "itom-discovery-specialist",
+    "title": "ServiceNow ITOM / Discovery Specialist",
+    "type": "Contract",
+    "description": "Service Mapping, CMDB health, Discovery patterns, and MID Server experience required. CIS-ITOM certification preferred. Strong understanding of network topology and cloud environments a plus.",
+    "applyUrl": "contact.html"
+  },
+  {
+    "id": "platform-developer",
+    "title": "ServiceNow Developer / Configurator",
+    "type": "Contract / Contract-to-Hire",
+    "description": "Scripting, Flow Designer, IntegrationHub, and UI Builder skills required. CSA required; CAD preferred. Experience with REST API integrations and custom application development a strong plus.",
+    "applyUrl": "contact.html"
+  }
+]

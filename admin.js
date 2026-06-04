@@ -4,6 +4,8 @@ const path = require('path');
 const STATIC_DIR = path.join(__dirname, 'raas-tech');
 const BLOG_DIR = path.join(STATIC_DIR, 'blog');
 const BLOG_INDEX = path.join(STATIC_DIR, 'blog.html');
+const JOBS_FILE = path.join(__dirname, 'data', 'jobs.json');
+const JOBS_HTML = path.join(STATIC_DIR, 'jobs.html');
 const BASE_URL = 'https://xeniatek-website-production.up.railway.app';
 
 // ── Sessions ──────────────────────────────────────────────────────────────────
@@ -349,6 +351,50 @@ function addCardToBlogIndex({ title, slug, tag, date, readTime, excerpt }) {
   fs.writeFileSync(BLOG_INDEX, html, 'utf8');
 }
 
+// ── Jobs helpers ─────────────────────────────────────────────────────────────
+function getJobs() {
+  try {
+    if (!fs.existsSync(JOBS_FILE)) return [];
+    return JSON.parse(fs.readFileSync(JOBS_FILE, 'utf8'));
+  } catch { return []; }
+}
+
+function saveJobs(jobs) {
+  fs.mkdirSync(path.dirname(JOBS_FILE), { recursive: true });
+  fs.writeFileSync(JOBS_FILE, JSON.stringify(jobs, null, 2), 'utf8');
+  rebuildJobsHtml(jobs);
+}
+
+function jobCardHtml(job) {
+  return `
+    <!-- job:${job.id} -->
+    <div class="job-card reveal">
+      <div class="job-card-header">
+        <div class="job-card-icon">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="20" height="14" rx="2" stroke="#7ed321" stroke-width="1.7"/>
+            <path d="M10 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#7ed321" stroke-width="1.7"/>
+            <path d="M4 14h20" stroke="#7ed321" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="job-card-title">${job.title}</div>
+          <div class="job-card-type">${job.type}</div>
+        </div>
+      </div>
+      <p class="job-card-desc">${job.description}</p>
+      <a href="${job.applyUrl || 'contact.html'}" class="job-card-apply">Apply Now <i class="fas fa-arrow-right"></i></a>
+    </div>`;
+}
+
+function rebuildJobsHtml(jobs) {
+  if (!fs.existsSync(JOBS_HTML)) return;
+  let html = fs.readFileSync(JOBS_HTML, 'utf8');
+  const cards = jobs.map(jobCardHtml).join('\n');
+  html = html.replace(/(<!-- JOBS_START -->)[\s\S]*?(<!-- JOBS_END -->)/, `$1\n${cards}\n$2`);
+  fs.writeFileSync(JOBS_HTML, html, 'utf8');
+}
+
 // ── Request handler ───────────────────────────────────────────────────────────
 function handleAdmin(req, res) {
   const url = req.url.split('?')[0];
@@ -408,15 +454,38 @@ function handleAdmin(req, res) {
         </div>
       </li>`).join('');
 
+    const jobs = getJobs();
+    const jobRows = jobs.map((j, i) => `
+      <li>
+        <div>
+          <div class="post-title">${j.title}</div>
+          <div class="post-meta">${j.type}</div>
+        </div>
+        <div class="post-actions">
+          <a href="/admin/jobs/edit?id=${j.id}" class="btn btn-secondary" style="font-size:0.8rem;padding:6px 14px">Edit</a>
+          <form method="POST" action="/admin/jobs/delete" style="display:inline" onsubmit="return confirm('Delete this job?')">
+            <input type="hidden" name="id" value="${j.id}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </li>`).join('');
+
     return send(200, page('Dashboard', `
-      ${msg === 'saved' ? '<div class="success">✓ Post published successfully!</div>' : ''}
-      ${msg === 'deleted' ? '<div class="success">Post deleted.</div>' : ''}
+      ${msg === 'saved' ? '<div class="success">✓ Saved successfully!</div>' : ''}
+      ${msg === 'deleted' ? '<div class="success">Deleted.</div>' : ''}
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <h2 style="margin:0">Job Postings (${jobs.length})</h2>
+          <a href="/admin/jobs/new" class="btn btn-primary">+ New Job</a>
+        </div>
+        ${jobs.length ? `<ul class="post-list">${jobRows}</ul>` : '<p style="color:#6060a0">No jobs yet.</p>'}
+      </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
           <h2 style="margin:0">Blog Posts (${posts.length})</h2>
           <a href="/admin/new" class="btn btn-primary">+ New Post</a>
         </div>
-        ${posts.length ? `<ul class="post-list">${rows}</ul>` : '<p style="color:#6060a0">No posts yet. Create your first one!</p>'}
+        ${posts.length ? `<ul class="post-list">${rows}</ul>` : '<p style="color:#6060a0">No posts yet.</p>'}
       </div>`));
   }
 
@@ -496,7 +565,94 @@ function handleAdmin(req, res) {
     return;
   }
 
+  // ── Jobs routes ───────────────────────────────────────────────────────────
+  if (url === '/admin/jobs/new' && req.method === 'GET') {
+    return send(200, page('New Job', jobForm({})));
+  }
+
+  if (url === '/admin/jobs/edit' && req.method === 'GET') {
+    const id = query.get('id');
+    const job = getJobs().find(j => j.id === id);
+    if (!job) return redirect('/admin');
+    return send(200, page('Edit Job', jobForm({ ...job, editing: true })));
+  }
+
+  if (url === '/admin/jobs/save' && req.method === 'POST') {
+    let raw = '';
+    req.on('data', c => raw += c);
+    req.on('end', () => {
+      const p = new URLSearchParams(raw);
+      const title = p.get('title')?.trim() || '';
+      const type = p.get('type')?.trim() || 'Contract';
+      const description = p.get('description')?.trim() || '';
+      const applyUrl = p.get('applyUrl')?.trim() || 'contact.html';
+      const isNew = p.get('is_new') === '1';
+      const existingId = p.get('id');
+      const id = existingId || slugify(title);
+
+      if (!title || !description) return redirect('/admin/jobs/new');
+
+      const jobs = getJobs();
+      const idx = jobs.findIndex(j => j.id === id);
+      const job = { id, title, type, description, applyUrl };
+
+      if (idx >= 0) jobs[idx] = job;
+      else jobs.push(job);
+
+      saveJobs(jobs);
+      redirect('/admin?msg=saved');
+    });
+    return;
+  }
+
+  if (url === '/admin/jobs/delete' && req.method === 'POST') {
+    let raw = '';
+    req.on('data', c => raw += c);
+    req.on('end', () => {
+      const id = new URLSearchParams(raw).get('id');
+      const jobs = getJobs().filter(j => j.id !== id);
+      saveJobs(jobs);
+      redirect('/admin?msg=deleted');
+    });
+    return;
+  }
+
   redirect('/admin');
+}
+
+// ── Job form HTML ──────────────────────────────────────────────────────────────
+function jobForm({ id = '', title = '', type = 'Contract', description = '', applyUrl = 'contact.html', editing = false }) {
+  const types = ['Contract','Full-Time','Contract / Full-Time','Contract / Contract-to-Hire','Part-Time'];
+  const typeOpts = types.map(t => `<option value="${t}"${t === type ? ' selected' : ''}>${t}</option>`).join('');
+  return `
+    <div class="card">
+      <h2>${editing ? 'Edit Job Posting' : 'New Job Posting'}</h2>
+      <form method="POST" action="/admin/jobs/save">
+        <input type="hidden" name="is_new" value="${editing ? '0' : '1'}">
+        <input type="hidden" name="id" value="${id}">
+        <div class="fg">
+          <label>Job Title *</label>
+          <input type="text" name="title" value="${title.replace(/"/g, '&quot;')}" placeholder="e.g. ServiceNow ITSM Developer" required>
+        </div>
+        <div class="fg">
+          <label>Employment Type</label>
+          <select name="type">${typeOpts}</select>
+        </div>
+        <div class="fg">
+          <label>Description *</label>
+          <textarea name="description" rows="5" placeholder="Skills required, certifications, experience level..." required>${description.replace(/</g, '&lt;')}</textarea>
+        </div>
+        <div class="fg">
+          <label>Apply Button URL</label>
+          <input type="text" name="applyUrl" value="${applyUrl}" placeholder="contact.html">
+          <div class="tip">Use contact.html to send applicants to your contact form, or a full URL for an external ATS.</div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px">
+          <button type="submit" class="btn btn-primary">Save Job</button>
+          <a href="/admin" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>`;
 }
 
 // ── Post form HTML ─────────────────────────────────────────────────────────────
