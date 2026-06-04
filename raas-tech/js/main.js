@@ -235,3 +235,17 @@ if (resumeFormEl) {
     });
   }
 })();
+
+// Announcement bar - persist dismissal across pages
+(function() {
+  if (localStorage.getItem('announcementDismissed')) {
+    var bar = document.getElementById('announcementBar');
+    if (bar) bar.style.display = 'none';
+  }
+  var closeBtn = document.querySelector('.announcement-bar-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      localStorage.setItem('announcementDismissed', '1');
+    });
+  }
+})();
