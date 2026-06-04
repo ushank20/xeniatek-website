@@ -358,7 +358,7 @@ function handleAdmin(req, res) {
     res.writeHead(code, { 'Content-Type': 'text/html; charset=utf-8', ...headers });
     res.end(html);
   };
-  const redirect = (loc) => { res.writeHead(302, { Location: loc }); res.end(); };
+  const redirect = (loc, headers = {}) => { res.writeHead(302, { Location: loc, ...headers }); res.end(); };
 
   // Login
   if (url === '/admin/login' && req.method === 'POST') {
