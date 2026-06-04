@@ -127,6 +127,13 @@ function serve404(res) {
 
 http.createServer(async (req, res) => {
 
+  // Redirect root domain to www
+  const host = req.headers.host || '';
+  if (host === 'xeniatek.com' || host === 'xeniatek.com:443') {
+    res.writeHead(301, { Location: `https://www.xeniatek.com${req.url}` });
+    return res.end();
+  }
+
   // Admin panel
   if (req.url.startsWith('/admin')) return handleAdmin(req, res);
 
