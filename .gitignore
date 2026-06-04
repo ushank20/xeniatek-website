@@ -2,3 +2,4 @@ node_modules/
 __MACOSX/
 .DS_Store
 *.DS_Store
+node_modules/
