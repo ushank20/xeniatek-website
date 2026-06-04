@@ -135,90 +135,86 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
+// Shared form submission helper
+async function submitForm(formEl, msgEl, successText, loadingText) {
+  msgEl.innerHTML = '';
+  const btn = formEl.querySelector('button[type="submit"]');
+  const orig = btn.innerHTML;
+  btn.innerHTML = loadingText || 'Sending...';
+  btn.disabled = true;
+
+  const data = {};
+  new FormData(formEl).forEach((val, key) => {
+    if (data[key] !== undefined) {
+      data[key] = [].concat(data[key], val);
+    } else {
+      data[key] = val;
+    }
+  });
+
+  try {
+    const res = await fetch(formEl.action, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+    });
+    const result = await res.json();
+    if (result.success === 'true' || result.success === true) {
+      msgEl.innerHTML = `<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">${successText}</div>`;
+      formEl.reset();
+    } else {
+      msgEl.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email us at <a href="mailto:info@xeniatek.com">info@xeniatek.com</a>.</div>';
+    }
+  } catch (err) {
+    msgEl.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Network error. Please check your connection and try again.</div>';
+  } finally {
+    btn.innerHTML = orig;
+    btn.disabled = false;
+    msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// Contact form
 const contactFormEl = document.getElementById('contactForm');
 if (contactFormEl) {
-  contactFormEl.addEventListener('submit', async function(e) {
+  contactFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // Clear previous errors
     document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
-    const formMessage = document.getElementById('formMessage');
-    formMessage.innerHTML = '';
-
-    // Get form data
-    const formData = new FormData(this);
-
-    // Show loading state
-    const submitBtn = document.querySelector('.form-submit');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.disabled = true;
-
-    try {
-        const response = await fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        const result = await response.json();
-
-        if (result.success === 'true' || result.success === true || result.ok) {
-            formMessage.innerHTML = `<div style="background: #e9f8cc; color: #100F2E; padding: 15px; border-radius: 8px; border-left: 4px solid #7ed321; margin-bottom: 16px;">
-                Message sent successfully! We will be in touch soon.
-            </div>`;
-            document.getElementById('contactForm').reset();
-        } else {
-            formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c; margin-bottom: 16px;">
-                Something went wrong. Please try again or email us directly at info@XeniaTek.com
-            </div>`;
-        }
-    } catch (error) {
-        formMessage.innerHTML = `<div style="background: #fee; color: #c0392b; padding: 15px; border-radius: 8px; border-left: 4px solid #e74c3c; margin-bottom: 16px;">
-            Network error. Please try again.
-        </div>`;
-    } finally {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-
-        // Scroll to message
-        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    const msgEl = document.getElementById('formMessage');
+    submitForm(this, msgEl, 'Message sent successfully! We will be in touch soon.', '<i class="fas fa-spinner fa-spin"></i> Sending...');
   });
 }
 
 // Resume form (jobs page)
 const resumeFormEl = document.getElementById('resumeForm');
 if (resumeFormEl) {
-  resumeFormEl.addEventListener('submit', async function(e) {
+  resumeFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    const formMessage = document.getElementById('resumeFormMessage');
-    formMessage.innerHTML = '';
-    const formData = new FormData(this);
-    const submitBtn = this.querySelector('.form-submit');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Submitting...';
-    submitBtn.disabled = true;
-    try {
-      const response = await fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      const result = await response.json();
-      if (result.success === 'true' || result.success === true || result.ok) {
-        formMessage.innerHTML = '<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">Thank you! We\'ll be in touch soon.</div>';
-        resumeFormEl.reset();
-      } else {
-        formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email us at info@xeniatek.com directly.</div>';
-      }
-    } catch (err) {
-      formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Network error. Please try again.</div>';
-    } finally {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    submitForm(this, document.getElementById('resumeFormMessage'), "Thank you! We'll be in touch soon.", 'Submitting...');
+  });
+}
+
+// Submit resume page form
+const submitResumeFormEl = document.getElementById('submitResumeForm');
+if (submitResumeFormEl) {
+  const msgEl = document.createElement('div');
+  msgEl.id = 'submitResumeMessage';
+  submitResumeFormEl.prepend(msgEl);
+  submitResumeFormEl.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm(this, msgEl, "Thank you! A XeniaTek team member will review your resume within 2 business days.", 'Submitting...');
+  });
+}
+
+// Newsletter form (blog page)
+const newsletterFormEl = document.getElementById('newsletterForm');
+if (newsletterFormEl) {
+  const msgEl = document.createElement('div');
+  msgEl.id = 'newsletterMessage';
+  newsletterFormEl.after(msgEl);
+  newsletterFormEl.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm(this, msgEl, "You're subscribed! Expect ServiceNow insights in your inbox.", 'Subscribing...');
   });
 }
 

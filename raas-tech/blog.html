@@ -151,7 +151,8 @@
 <div class="newsletter-strip">
   <h3>Stay Ahead of the ServiceNow Market</h3>
   <p>Get hiring insights, salary benchmarks, and talent strategies delivered to your inbox.</p>
-  <form class="newsletter-form" action="https://formsubmit.co/ajax/ushank.tech@gmail.com" method="POST">
+  <form id="newsletterForm" class="newsletter-form" action="/api/contact" method="POST">
+    <input type="hidden" name="_subject" value="Newsletter Signup – XeniaTek Blog">
     <input type="email" name="email" placeholder="Your work email address" required>
     <button type="submit" class="btn-contact" style="cursor:pointer; border:none;">Get ServiceNow Market Insights</button>
   </form>

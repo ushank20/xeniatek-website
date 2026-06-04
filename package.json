@@ -2,9 +2,10 @@
   "name": "xeniatek-website",
   "version": "1.0.0",
   "scripts": {
-    "start": "serve raas-tech -p ${PORT:-3000}"
+    "start": "node server.js"
   },
   "dependencies": {
-    "serve": "^14.2.3"
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13"
   }
 }
