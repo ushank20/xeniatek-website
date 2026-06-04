@@ -163,7 +163,7 @@ if (contactFormEl) {
 
         const result = await response.json();
 
-        if (result.ok) {
+        if (result.success === 'true' || result.success === true || result.ok) {
             formMessage.innerHTML = `<div style="background: #e9f8cc; color: #100F2E; padding: 15px; border-radius: 8px; border-left: 4px solid #7ed321; margin-bottom: 16px;">
                 Message sent successfully! We will be in touch soon.
             </div>`;
@@ -206,11 +206,11 @@ if (resumeFormEl) {
         headers: { 'Accept': 'application/json' }
       });
       const result = await response.json();
-      if (result.ok) {
+      if (result.success === 'true' || result.success === true || result.ok) {
         formMessage.innerHTML = '<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">Thank you! We\'ll be in touch soon.</div>';
         resumeFormEl.reset();
       } else {
-        formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email recruiting@xeniatek.com directly.</div>';
+        formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email us at info@xeniatek.com directly.</div>';
       }
     } catch (err) {
       formMessage.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Network error. Please try again.</div>';
