@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="canonical" href="https://xeniatek-website-production.up.railway.app/servicenow-cmdb-staffing.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 <body>
 
@@ -318,5 +319,27 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xeniatek-website-production.up.railway.app/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://xeniatek-website-production.up.railway.app/services.html"},{"@type":"ListItem","position":3,"name":"ServiceNow CMDB Staffing","item":"https://xeniatek-website-production.up.railway.app/servicenow-cmdb-staffing.html"}]}
 </script>
 <script src="js/main.js"></script>
+<div id="exit-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;padding:48px 40px;max-width:480px;width:90%;text-align:center;position:relative;">
+    <button onclick="document.getElementById('exit-popup').style.display='none';localStorage.setItem('exitPopupSeen','1');" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#888;" aria-label="Close">&#x2715;</button>
+    <div style="font-size:2.5rem;margin-bottom:12px;">&#x1F4CA;</div>
+    <h3 style="font-size:1.4rem;font-weight:700;color:#1D0E82;margin-bottom:10px;">Before you go...</h3>
+    <p style="font-size:0.95rem;color:#3a3a4a;line-height:1.65;margin-bottom:24px;">Get the free <strong>2026 ServiceNow Salary Guide</strong> &mdash; salary ranges for 10 roles, from Administrator to CTA.</p>
+    <a href="salary-guide.html" onclick="document.getElementById('exit-popup').style.display='none';localStorage.setItem('exitPopupSeen','1');" style="display:inline-block;background:#77BF00;color:#fff;padding:13px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:0.95rem;">Get the Free Guide &rarr;</a>
+    <p style="font-size:0.78rem;color:#999;margin-top:14px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('exitPopupSeen')) return;
+  var shown=false;
+  document.addEventListener('mouseleave',function(e){
+    if(e.clientY<=0&&!shown){
+      shown=true;
+      document.getElementById('exit-popup').style.display='flex';
+    }
+  });
+})();
+</script>
 </body>
 </html>
