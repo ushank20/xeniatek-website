@@ -83,7 +83,7 @@ function sendEmail(fields) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       from: 'XeniaTek <onboarding@resend.dev>',
-      to: ['ushank.tech@gmail.com'],
+      to: ['info@xeniatek.com'],
       reply_to: fields.email || undefined,
       subject: fields._subject || 'New Form Submission — XeniaTek',
       html: buildEmail(fields),
