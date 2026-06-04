@@ -1,5 +1,5 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const path = require('path');
 const fs = require('fs');
 
@@ -10,7 +10,7 @@ const STATIC_DIR = path.join(__dirname, 'raas-tech');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Security headers (replaces serve.json headers)
+// Security headers
 app.use((req, res, next) => {
   res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -20,16 +20,6 @@ app.use((req, res, next) => {
   res.setHeader('X-DNS-Prefetch-Control', 'on');
   next();
 });
-
-function getTransporter() {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
-    },
-  });
-}
 
 function buildEmail(fields) {
   const skip = new Set(['_captcha', '_subject', '_next', '_honey']);
@@ -61,16 +51,17 @@ app.post('/api/contact', async (req, res) => {
   const isAjax = (req.headers.accept || '').includes('application/json');
   const fields = req.body;
 
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
-    console.error('GMAIL_USER or GMAIL_PASS env vars not set');
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY env var not set');
     if (isAjax) return res.status(500).json({ success: 'false' });
     return res.redirect('/?error=1');
   }
 
   try {
-    await getTransporter().sendMail({
-      from: `"XeniaTek Website" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: 'XeniaTek <onboarding@resend.dev>',
+      to: 'ushank.tech@gmail.com',
       replyTo: fields.email || undefined,
       subject: fields._subject || 'New Form Submission — XeniaTek',
       html: buildEmail(fields),
@@ -79,7 +70,7 @@ app.post('/api/contact', async (req, res) => {
     if (isAjax) return res.json({ success: 'true' });
     return res.redirect(fields._next || '/contact.html?sent=1');
   } catch (err) {
-    console.error('Mailer error:', err.message);
+    console.error('Resend error:', err.message);
     if (isAjax) return res.status(500).json({ success: 'false' });
     return res.redirect('/?error=1');
   }
