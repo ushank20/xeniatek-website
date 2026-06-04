@@ -2,6 +2,7 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const handleAdmin = require('./admin');
 
 const PORT = process.env.PORT || 3000;
 const STATIC_DIR = path.join(__dirname, 'raas-tech');
@@ -125,6 +126,9 @@ function serve404(res) {
 }
 
 http.createServer(async (req, res) => {
+
+  // Admin panel
+  if (req.url.startsWith('/admin')) return handleAdmin(req, res);
 
   // POST /api/contact — form handler
   if (req.method === 'POST' && req.url.startsWith('/api/contact')) {
