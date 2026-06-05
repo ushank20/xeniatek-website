@@ -218,6 +218,18 @@ if (newsletterFormEl) {
   });
 }
 
+// Hiring form (hire-servicenow-talent page)
+const hiringFormEl = document.getElementById('hiringForm');
+if (hiringFormEl) {
+  const hiringMsgEl = document.createElement('div');
+  hiringMsgEl.id = 'hiringFormMsg';
+  hiringFormEl.prepend(hiringMsgEl);
+  hiringFormEl.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm(this, hiringMsgEl, "Thank you! A XeniaTek team member will follow up within one business day.", 'Submitting...');
+  });
+}
+
 // Cookie consent
 (function() {
   if (!localStorage.getItem('cookieConsent')) {

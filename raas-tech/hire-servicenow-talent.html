@@ -164,7 +164,8 @@
     <div class="lp-form-wrap">
       <h2 class="lp-form-heading">Tell Us What You Need</h2>
       <p class="lp-form-subhead">Fill out the form and a XeniaTek team member will follow up within one business day. We ask the right questions upfront so we don't waste your time.</p>
-      <form class="lp-form" action="https://formspree.io/f/xdkndgqw" method="POST">
+      <form id="hiringForm" class="lp-form" action="/api/contact" method="POST">
+        <input type="hidden" name="_subject" value="New Hiring Request – XeniaTek">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="hName">Full Name</label>
@@ -206,6 +207,68 @@
         <button class="form-submit" type="submit">Submit Hiring Request</button>
         <div id="hiringFormMessage" role="alert" aria-live="polite"></div>
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOCIAL PROOF ══════════════════════════════════════ -->
+<section class="lp-section reveal">
+  <div class="lp-inner" style="text-align:center;">
+    <div class="lp-badge"><span>✦ Proven Results ✦</span></div>
+    <h2 class="lp-heading">What Hiring Managers Say</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px;text-align:left;">
+      <div style="background:#f4f6ff;border-radius:12px;padding:28px;border-left:4px solid #1D0E82;">
+        <p style="font-size:0.95rem;color:#333;line-height:1.7;margin-bottom:16px;">"We needed an IRM consultant within two weeks of a project kickoff. XeniaTek presented two qualified candidates in 48 hours — both had real implementation experience, not just platform familiarity. We hired on the spot."</p>
+        <div style="font-weight:700;color:#1D0E82;font-size:0.85rem;">— Senior IT Director, Fortune 500 Healthcare Company</div>
+      </div>
+      <div style="background:#f4f6ff;border-radius:12px;padding:28px;border-left:4px solid #77BF00;">
+        <p style="font-size:0.95rem;color:#333;line-height:1.7;margin-bottom:16px;">"What separates XeniaTek from every other staffing firm we've used is that they actually understand ServiceNow. I didn't have to explain what HRSD was or why case management matters. They just got it."</p>
+        <div style="font-weight:700;color:#1D0E82;font-size:0.85rem;">— VP of Digital Transformation, Regional Financial Services Firm</div>
+      </div>
+      <div style="background:#f4f6ff;border-radius:12px;padding:28px;border-left:4px solid #1D0E82;">
+        <p style="font-size:0.95rem;color:#333;line-height:1.7;margin-bottom:16px;">"Three ITAM placements in 60 days during a critical migration. The candidates were solid, the communication was clear, and the onboarding was seamless. We've made XeniaTek our go-to for ServiceNow talent."</p>
+        <div style="font-weight:700;color:#1D0E82;font-size:0.85rem;">— Enterprise Architecture Lead, Mid-Market Retailer</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="font-size:2rem;font-weight:900;color:#1D0E82;">43</div><div style="font-size:0.85rem;color:#666;">Total Placements</div></div>
+      <div style="text-align:center;"><div style="font-size:2rem;font-weight:900;color:#1D0E82;">4.57</div><div style="font-size:0.85rem;color:#666;">CSAT Score</div></div>
+      <div style="text-align:center;"><div style="font-size:2rem;font-weight:900;color:#1D0E82;">90%</div><div style="font-size:0.85rem;color:#666;">12-Month Retention</div></div>
+      <div style="text-align:center;"><div style="font-size:2rem;font-weight:900;color:#1D0E82;">48hr</div><div style="font-size:0.85rem;color:#666;">Initial Shortlist</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EMPLOYER FAQ ═══════════════════════════════════════ -->
+<section class="lp-section-alt reveal">
+  <div class="lp-inner">
+    <div class="lp-badge"><span>✦ Frequently Asked Questions ✦</span></div>
+    <h2 class="lp-heading">Employer FAQs</h2>
+    <div style="max-width:780px;margin:32px auto 0;">
+      <details style="border-bottom:1px solid #ddd;padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">How quickly can you present candidates? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">For most ServiceNow roles, we can present an initial shortlist within 48 hours of a discovery call. For specialized roles (CIS-IRM, HRSD architect, ITOM lead), allow 3–5 business days. Our active talent network means we're not starting from scratch.</p>
+      </details>
+      <details style="border-bottom:1px solid #ddd;padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">What engagement models do you support? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">We offer contract (staff augmentation), contract-to-hire, and project-based (module delivery) models. Contract engagements are flexible — weekly or monthly billing, no long-term commitments. Contract-to-hire allows you to evaluate a consultant before converting to full-time.</p>
+      </details>
+      <details style="border-bottom:1px solid #ddd;padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">How do you screen candidates? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">Every candidate is interviewed twice by XeniaTek before you see them — once for technical depth (certifications, hands-on experience, specific module knowledge) and once for communication, culture, and remote readiness. We never forward a resume without a prior conversation.</p>
+      </details>
+      <details style="border-bottom:1px solid #ddd;padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">Do you offer a placement guarantee? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">Yes. If a contractor doesn't work out within the first 30 days, we replace them at no additional cost. Our 90% 12-month retention rate is the track record behind that promise.</p>
+      </details>
+      <details style="border-bottom:1px solid #ddd;padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">Do you work with companies outside Minneapolis? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">Yes. We place ServiceNow professionals across North America. Most of our placements are remote-first or hybrid, which gives you access to our full talent network regardless of your location.</p>
+      </details>
+      <details style="padding:18px 0;cursor:pointer;">
+        <summary style="font-weight:700;color:#1D0E82;font-size:1rem;list-style:none;display:flex;justify-content:space-between;">What's your fee structure? <span>+</span></summary>
+        <p style="margin-top:12px;color:#444;line-height:1.7;">We charge a markup on contractor hourly rates for staff augmentation. For direct hire, we charge a one-time placement fee based on the first-year salary. We're transparent about fees upfront — no surprise invoices. Contact us for a specific quote based on your role and engagement model.</p>
+      </details>
     </div>
   </div>
 </section>
