@@ -496,7 +496,7 @@ body {
 .stat-card:hover { transform: translateY(-3px); }
 .stats-row a { text-decoration: none; color: inherit; }
 .stat-card:nth-child(1) { background: var(--stat-green); }
-.stat-card:nth-child(2), .stat-card:nth-child(3), .stat-card:nth-child(4), .stat-card:nth-child(5) { background: var(--stat-blue); }
+.stat-card:nth-child(2), .stat-card:nth-child(3), .stat-card:nth-child(4), .stat-card:nth-child(5) { background: var(--stat-green); }
 .stat-number { font-family: 'Kumbh Sans', sans-serif; font-size: clamp(30px, 3.4vw, 46px); font-weight: 500; color: var(--navy); letter-spacing: -0.5px; line-height: 1;
   /* Add transition for smooth counting */
   transition: all 0.1s ease;
@@ -507,7 +507,7 @@ body {
   }
 .stat-label { display: inline-block; font-family: 'Kumbh Sans', sans-serif; font-size: 12.5px; font-weight: 500; color: var(--text-dark); padding: 5px 13px; border-radius: 30px; width: fit-content; }
 .stat-card:nth-child(1) .stat-label { background: rgba(126,211,33,0.25); }
-.stat-card:nth-child(2) .stat-label, .stat-card:nth-child(3) .stat-label, .stat-card:nth-child(4) .stat-label, .stat-card:nth-child(5) .stat-label { background: rgba(100,120,220,0.14); }
+.stat-card:nth-child(2) .stat-label, .stat-card:nth-child(3) .stat-label, .stat-card:nth-child(4) .stat-label, .stat-card:nth-child(5) .stat-label { background: rgba(126,211,33,0.25); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
