@@ -398,6 +398,13 @@ body {
   margin-top: 5px;
 }
 
+/* Green glow on all logos */
+.footer-logo-box img,
+.partner-logo img,
+.logo-box img {
+  filter: drop-shadow(0 0 14px rgba(119,191,0,0.65));
+}
+
 /* Remove max-width from footer-brand if needed */
 .footer-brand {
   display: flex;
