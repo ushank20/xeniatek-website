@@ -361,8 +361,8 @@ body {
 
 .footer-bottom { border-top: 1.5px solid var(--green); padding: 20px 40px; }
 .footer-bottom-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.footer-copy,
-.footer-credit { font-family: 'Kumbh Sans', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); }
+.footer-copy { font-family: 'Kumbh Sans', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); }
+.footer-credit { font-family: 'Kumbh Sans', sans-serif; font-size: 13px; font-weight: 500; color: #ffffff; }
 .footer-credit strong { font-weight: 700; color: rgba(255,255,255,0.80); }
 
 /* Add to your existing CSS */
