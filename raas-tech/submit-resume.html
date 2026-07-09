@@ -24,13 +24,12 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="canonical" href="https://xeniatek-website-production.up.railway.app/submit-resume.html">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <!-- Google Analytics: Replace G-XXXXXXXXXX with your GA4 Measurement ID -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
 </head>
 <body>
 
 <!-- â•â•â• HEADER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
 <header class="header-wrap">
   <div class="navbar">
     <a href="index.html" class="logo">
@@ -66,7 +65,7 @@
 </header>
 
 <!-- â•â•â• PAGE BANNER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-<div class="page-banner-wrap">
+<div id="main-content" class="page-banner-wrap">
   <div class="page-banner">
     <div class="page-banner-bg"></div>
     <div class="page-banner-content reveal">
@@ -155,7 +154,7 @@
     <div class="lp-form-wrap" style="max-width:760px;">
       <h2 class="lp-form-heading">Submit Your Resume</h2>
       <p class="lp-form-subhead">Give us your background and we'll be in touch within 2 business days. No automated responses — a real person will review this.</p>
-      <form id="submitResumeForm" class="lp-form" action="/api/contact" method="POST">
+      <form id="submitResumeForm" class="lp-form" action="https://formspree.io/f/xdkndgqw" method="POST">
         <input type="hidden" name="_subject" value="New Resume Submission – XeniaTek">
         <div class="form-row">
           <div class="form-group">
