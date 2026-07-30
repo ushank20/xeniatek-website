@@ -143,20 +143,11 @@ async function submitForm(formEl, msgEl, successText, loadingText) {
   btn.innerHTML = loadingText || 'Sending...';
   btn.disabled = true;
 
-  const data = {};
-  new FormData(formEl).forEach((val, key) => {
-    if (data[key] !== undefined) {
-      data[key] = [].concat(data[key], val);
-    } else {
-      data[key] = val;
-    }
-  });
-
   try {
     const res = await fetch(formEl.action, {
       method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+      body: new FormData(formEl),
+      headers: { 'Accept': 'application/json' }
     });
     const result = await res.json();
     if (result.ok === true || result.success === 'true' || result.success === true) {
