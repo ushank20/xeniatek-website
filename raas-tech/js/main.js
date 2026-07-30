@@ -159,7 +159,7 @@ async function submitForm(formEl, msgEl, successText, loadingText) {
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
     });
     const result = await res.json();
-    if (result.success === 'true' || result.success === true) {
+    if (result.ok === true || result.success === 'true' || result.success === true) {
       msgEl.innerHTML = `<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">${successText}</div>`;
       formEl.reset();
     } else {
