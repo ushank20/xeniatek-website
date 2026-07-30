@@ -135,7 +135,7 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-const W3F_KEY = '7d125c39-6d48-4390-8249-2f2c527cc801';
+const W3F_KEY = '701a5ab3-b523-4279-82c7-0bb97b3dbd69';
 
 const SUCCESS_STYLE = 'background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;';
 const ERROR_STYLE   = 'background:#ffeaea;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;';
