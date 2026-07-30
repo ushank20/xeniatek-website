@@ -135,39 +135,25 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-// Shared form submission helper — tries AJAX first, falls back to native POST
-async function submitForm(formEl, msgEl, successText, loadingText) {
-  msgEl.innerHTML = '';
-  const btn = formEl.querySelector('button[type="submit"]');
-  const orig = btn.innerHTML;
-  btn.innerHTML = loadingText || 'Sending...';
-  btn.disabled = true;
+// Build a mailto: link from all form fields
+function buildMailto(formEl, toEmail) {
+  const data = new FormData(formEl);
+  const subject = data.get('_subject') || 'XeniaTek Form Submission';
+  const lines = [];
+  data.forEach((val, key) => {
+    if (!key.startsWith('_') && val) lines.push(key + ': ' + val);
+  });
+  return 'mailto:' + toEmail
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(lines.join('\n'));
+}
 
-  let ajaxOk = false;
-
-  try {
-    const res = await fetch(formEl.action, {
-      method: 'POST',
-      body: new FormData(formEl),
-      headers: { 'Accept': 'application/json' }
-    });
-    const result = await res.json();
-    if (result.ok === true || result.success === 'true' || result.success === true) {
-      ajaxOk = true;
-      msgEl.innerHTML = `<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">${successText}</div>`;
-      formEl.reset();
-    }
-  } catch (_) { /* network error — fall through to native submit */ }
-
-  if (!ajaxOk) {
-    // Native POST fallback: let browser submit directly to Formspree,
-    // which redirects to _next (thank-you page) on success.
-    formEl.submit();
-    return;
-  }
-
-  btn.innerHTML = orig;
-  btn.disabled = false;
+// Show inline success and open email client
+function handleFormSubmit(formEl, msgEl, successText) {
+  const mailto = buildMailto(formEl, 'info@xeniatek.com');
+  window.location.href = mailto;
+  msgEl.innerHTML = '<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">' + successText + '</div>';
+  formEl.reset();
   msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
@@ -178,7 +164,7 @@ if (contactFormEl) {
     e.preventDefault();
     document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
     const msgEl = document.getElementById('formMessage');
-    submitForm(this, msgEl, 'Message sent successfully! We will be in touch soon.', '<i class="fas fa-spinner fa-spin"></i> Sending...');
+    handleFormSubmit(this, msgEl, 'Message received! Your email client should open to send your message — or email us directly at info@xeniatek.com.');
   });
 }
 
@@ -187,7 +173,8 @@ const resumeFormEl = document.getElementById('resumeForm');
 if (resumeFormEl) {
   resumeFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    submitForm(this, document.getElementById('resumeFormMessage'), "Thank you! We'll be in touch soon.", 'Submitting...');
+    const msgEl = document.getElementById('resumeFormMessage');
+    handleFormSubmit(this, msgEl, "Thank you! Your email client should open to complete your submission — or email info@xeniatek.com directly.");
   });
 }
 
@@ -199,7 +186,7 @@ if (submitResumeFormEl) {
   submitResumeFormEl.prepend(msgEl);
   submitResumeFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    submitForm(this, msgEl, "Thank you! A XeniaTek team member will review your resume within 2 business days.", 'Submitting...');
+    handleFormSubmit(this, msgEl, "Thank you! Your email client should open to complete your submission — or email info@xeniatek.com directly.");
   });
 }
 
@@ -211,7 +198,7 @@ if (newsletterFormEl) {
   newsletterFormEl.after(msgEl);
   newsletterFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    submitForm(this, msgEl, "You're subscribed! Expect ServiceNow insights in your inbox.", 'Subscribing...');
+    handleFormSubmit(this, msgEl, "Thanks for subscribing! Your email client should open — or email info@xeniatek.com to join our list.");
   });
 }
 
@@ -223,7 +210,7 @@ if (hiringFormEl) {
   hiringFormEl.prepend(hiringMsgEl);
   hiringFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    submitForm(this, hiringMsgEl, "Thank you! A XeniaTek team member will follow up within one business day.", 'Submitting...');
+    handleFormSubmit(this, hiringMsgEl, "Thank you! Your email client should open to complete your request — or email info@xeniatek.com directly.");
   });
 }
 
