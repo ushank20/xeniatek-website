@@ -135,25 +135,31 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-// Build a mailto: link from all form fields
-function buildMailto(formEl, toEmail) {
-  const data = new FormData(formEl);
-  const subject = data.get('_subject') || 'XeniaTek Form Submission';
-  const lines = [];
-  data.forEach((val, key) => {
-    if (!key.startsWith('_') && val) lines.push(key + ': ' + val);
-  });
-  return 'mailto:' + toEmail
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body=' + encodeURIComponent(lines.join('\n'));
-}
+const W3F_KEY = '7d125c39-6d48-4390-8249-2f2c527cc801';
 
-// Show inline success and open email client
-function handleFormSubmit(formEl, msgEl, successText) {
-  const mailto = buildMailto(formEl, 'info@xeniatek.com');
-  window.location.href = mailto;
-  msgEl.innerHTML = '<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">' + successText + '</div>';
-  formEl.reset();
+const SUCCESS_STYLE = 'background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;';
+const ERROR_STYLE   = 'background:#ffeaea;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;';
+
+async function submitForm(formEl, msgEl, successText, btnEl) {
+  if (btnEl) { btnEl.disabled = true; btnEl.textContent = 'Sending…'; }
+
+  const data = new FormData(formEl);
+  data.append('access_key', W3F_KEY);
+
+  try {
+    const res    = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const result = await res.json();
+    if (result.success) {
+      msgEl.innerHTML = '<div style="' + SUCCESS_STYLE + '">' + successText + '</div>';
+      formEl.reset();
+    } else {
+      msgEl.innerHTML = '<div style="' + ERROR_STYLE + '">Something went wrong. Please email us at <a href="mailto:info@xeniatek.com">info@xeniatek.com</a>.</div>';
+    }
+  } catch (err) {
+    msgEl.innerHTML = '<div style="' + ERROR_STYLE + '">Network error. Please email us at <a href="mailto:info@xeniatek.com">info@xeniatek.com</a>.</div>';
+  }
+
+  if (btnEl) { btnEl.disabled = false; btnEl.textContent = btnEl.dataset.label || 'Submit'; }
   msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
@@ -164,7 +170,9 @@ if (contactFormEl) {
     e.preventDefault();
     document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
     const msgEl = document.getElementById('formMessage');
-    handleFormSubmit(this, msgEl, 'Message received! Your email client should open to send your message — or email us directly at info@xeniatek.com.');
+    const btn   = this.querySelector('[type="submit"]');
+    if (btn && !btn.dataset.label) btn.dataset.label = btn.textContent;
+    submitForm(this, msgEl, 'Message sent! We\'ll be in touch within 1–2 business days.', btn);
   });
 }
 
@@ -174,7 +182,9 @@ if (resumeFormEl) {
   resumeFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
     const msgEl = document.getElementById('resumeFormMessage');
-    handleFormSubmit(this, msgEl, "Thank you! Your email client should open to complete your submission — or email info@xeniatek.com directly.");
+    const btn   = this.querySelector('[type="submit"]');
+    if (btn && !btn.dataset.label) btn.dataset.label = btn.textContent;
+    submitForm(this, msgEl, 'Resume submitted! A XeniaTek team member will review it within 2 business days.', btn);
   });
 }
 
@@ -186,7 +196,9 @@ if (submitResumeFormEl) {
   submitResumeFormEl.prepend(msgEl);
   submitResumeFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    handleFormSubmit(this, msgEl, "Thank you! Your email client should open to complete your submission — or email info@xeniatek.com directly.");
+    const btn = this.querySelector('[type="submit"]');
+    if (btn && !btn.dataset.label) btn.dataset.label = btn.textContent;
+    submitForm(this, msgEl, 'Resume submitted! A XeniaTek team member will review it within 2 business days.', btn);
   });
 }
 
@@ -198,7 +210,9 @@ if (newsletterFormEl) {
   newsletterFormEl.after(msgEl);
   newsletterFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    handleFormSubmit(this, msgEl, "Thanks for subscribing! Your email client should open — or email info@xeniatek.com to join our list.");
+    const btn = this.querySelector('[type="submit"]');
+    if (btn && !btn.dataset.label) btn.dataset.label = btn.textContent;
+    submitForm(this, msgEl, 'You\'re subscribed! Expect ServiceNow insights in your inbox.', btn);
   });
 }
 
@@ -210,7 +224,9 @@ if (hiringFormEl) {
   hiringFormEl.prepend(hiringMsgEl);
   hiringFormEl.addEventListener('submit', function(e) {
     e.preventDefault();
-    handleFormSubmit(this, hiringMsgEl, "Thank you! Your email client should open to complete your request — or email info@xeniatek.com directly.");
+    const btn = this.querySelector('[type="submit"]');
+    if (btn && !btn.dataset.label) btn.dataset.label = btn.textContent;
+    submitForm(this, hiringMsgEl, 'Request received! We\'ll follow up within 1 business day to schedule your discovery call.', btn);
   });
 }
 
