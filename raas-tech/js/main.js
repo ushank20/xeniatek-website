@@ -135,13 +135,15 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-// Shared form submission helper
+// Shared form submission helper — tries AJAX first, falls back to native POST
 async function submitForm(formEl, msgEl, successText, loadingText) {
   msgEl.innerHTML = '';
   const btn = formEl.querySelector('button[type="submit"]');
   const orig = btn.innerHTML;
   btn.innerHTML = loadingText || 'Sending...';
   btn.disabled = true;
+
+  let ajaxOk = false;
 
   try {
     const res = await fetch(formEl.action, {
@@ -151,18 +153,22 @@ async function submitForm(formEl, msgEl, successText, loadingText) {
     });
     const result = await res.json();
     if (result.ok === true || result.success === 'true' || result.success === true) {
+      ajaxOk = true;
       msgEl.innerHTML = `<div style="background:#e9f8cc;color:#100F2E;padding:15px;border-radius:8px;border-left:4px solid #7ed321;margin-bottom:16px;">${successText}</div>`;
       formEl.reset();
-    } else {
-      msgEl.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Something went wrong. Please email us at <a href="mailto:info@xeniatek.com">info@xeniatek.com</a>.</div>';
     }
-  } catch (err) {
-    msgEl.innerHTML = '<div style="background:#fee;color:#c0392b;padding:15px;border-radius:8px;border-left:4px solid #e74c3c;margin-bottom:16px;">Network error. Please check your connection and try again.</div>';
-  } finally {
-    btn.innerHTML = orig;
-    btn.disabled = false;
-    msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } catch (_) { /* network error — fall through to native submit */ }
+
+  if (!ajaxOk) {
+    // Native POST fallback: let browser submit directly to Formspree,
+    // which redirects to _next (thank-you page) on success.
+    formEl.submit();
+    return;
   }
+
+  btn.innerHTML = orig;
+  btn.disabled = false;
+  msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // Contact form
