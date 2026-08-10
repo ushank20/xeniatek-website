@@ -378,8 +378,12 @@ window.addEventListener('load', function() {
     maxZoom: 19
   }).addTo(map);
 
-  var dotHtml = '<div class="gf-dot-wrap"><div class="gf-dot-ring"></div><div class="gf-dot-core"></div></div>';
-  var icon = L.divIcon({ className: '', html: dotHtml, iconSize: [24,24], iconAnchor: [12,12] });
+  var style = document.createElement('style');
+  style.textContent = '@keyframes gf-pulse{0%{box-shadow:0 0 0 0 rgba(126,211,33,0.7),0 0 8px rgba(126,211,33,0.5)}70%{box-shadow:0 0 0 12px rgba(126,211,33,0),0 0 8px rgba(126,211,33,0.5)}100%{box-shadow:0 0 0 0 rgba(126,211,33,0),0 0 8px rgba(126,211,33,0.5)}}';
+  document.head.appendChild(style);
+
+  var dotHtml = '<span style="display:block;width:16px;height:16px;border-radius:50%;background:#7ed321;border:2.5px solid #fff;animation:gf-pulse 1.8s ease-out infinite;"></span>';
+  var icon = L.divIcon({ className: '', html: dotHtml, iconSize: [16,16], iconAnchor: [8,8] });
 
   var locations = [
     { latlng: [44.98, -93.27], label: 'Minneapolis, United States' },
