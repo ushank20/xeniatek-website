@@ -176,7 +176,7 @@ As part of trying to be a "do as I do" versus "do as I say", we are actively hel
 
 <!-- â•â•â• OUR PARTNERS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <!-- GLOBAL FOOTPRINT -->
-<section class="reveal" style="background:#0c0b1e; padding:80px 0;">
+<section style="background:#0c0b1e; padding:80px 0;">
   <style>
     .gf-inner { max-width:1100px; margin:0 auto; padding:0 24px; text-align:center; }
     .gf-heading { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:#fff; margin:16px 0 20px; line-height:1.2; }
@@ -360,9 +360,10 @@ As part of trying to be a "do as I do" versus "do as I say", we are actively hel
 <script src="js/main.js?v=4"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPaU=" crossorigin=""></script>
 <script>
-(function() {
+window.addEventListener('load', function() {
   var mapEl = document.getElementById('footprint-map');
-  if (!mapEl) return;
+  if (!mapEl || typeof L === 'undefined') return;
+
   var map = L.map('footprint-map', {
     center: [20, -20],
     zoom: 2,
@@ -370,6 +371,7 @@ As part of trying to be a "do as I do" versus "do as I say", we are actively hel
     scrollWheelZoom: false,
     attributionControl: true
   });
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     subdomains: 'abcd',
@@ -389,9 +391,12 @@ As part of trying to be a "do as I do" versus "do as I say", we are actively hel
   ];
 
   locations.forEach(function(loc) {
-    L.marker(loc.latlng, { icon: icon }).addTo(map).bindTooltip(loc.label, { permanent: false, direction: 'top', className: 'gf-tooltip' });
+    L.marker(loc.latlng, { icon: icon }).addTo(map)
+      .bindTooltip(loc.label, { permanent: false, direction: 'top', className: 'gf-tooltip' });
   });
-})();
+
+  setTimeout(function() { map.invalidateSize(); }, 300);
+});
 </script>
 </body>
 </html>
